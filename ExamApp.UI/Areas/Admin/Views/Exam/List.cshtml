@@ -1,0 +1,63 @@
+﻿@using ExamApp.Core.Models
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Exam>
+
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+     
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Exam List</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                      @foreach (var item in Model)
+                     {
+                         <tr>
+
+                             <td>@item.Id</td>
+                             <td>@item.Title</td>
+                             <td><a href="@Url.Action("Create","Exam", new{id=@item.Id})"><button type="button" class="btn btn-block btn-primary">Detail</button></a> 
+                                 <a href="@Url.Action("Delete","Exam", new{id=@item.Id})"><button type="button" class="btn btn-block btn-danger">Delete</button></a>
+                                
+                             </td>
+                         </tr>
+                     }
+               
+              
+             
+               
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>

@@ -8,5 +8,6 @@ namespace ExamApp.Core.Models
     {
         public int ExamId { get; set; }
         public string Title { get; set; }
+        public IList<QuestionOption> QuestionOptions { get; set; }
     }
 }

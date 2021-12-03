@@ -10,5 +10,6 @@ namespace ExamApp.Core.Models
         public string Option { get; set; }
         public string Title { get; set; }
         public bool IsCorrect { get; set; }
+        public Question Question { get; set; }
     }
 }

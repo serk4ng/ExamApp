@@ -8,5 +8,6 @@ namespace ExamApp.Core.Models
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public IList<Question> Questions { get; set; }
     }
 }
