@@ -1,8 +1,37 @@
-﻿@{
+﻿@using ExamApp.Core.Models
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@model IEnumerable<Exam>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h5 class="display-4">Choose Exam</h5>
+</div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td><a href="@Url.Action("Index","Exam",new{id=@item.Id})"><button type="button" class="btn btn-success">Take the Exam</button></a></td>
+                    </tr>
+                }
+            }
+
+
+
+        </tbody>
+    </table>
 </div>

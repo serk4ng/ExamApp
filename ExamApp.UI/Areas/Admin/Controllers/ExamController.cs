@@ -1,7 +1,11 @@
 ﻿using ExamApp.Core.Models;
 using ExamApp.Core.Services;
 using ExamApp.UI.Dto;
+using Fizzler.Systems.HtmlAgilityPack;
+using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace ExamApp.UI.Areas.Admin.Controllers
 {
@@ -25,9 +29,34 @@ namespace ExamApp.UI.Areas.Admin.Controllers
         }
         public IActionResult Create(int? id)
         {
-            if (id == null || id == 0)
-            {
+            if (id == null)
+            {//get the page
+                var web = new HtmlWeb();
+                var document = web.Load("https://www.wired.com/");
+                var page = document.DocumentNode;
+                List<string> titles = new List<string>();
+                List<string> descriptions = new List<string>();
+                //loop through all div tags with item css class
+                foreach (var item in page.QuerySelectorAll(".SummaryCollageEightGridItemList-drfwxm .summary-item__hed"))
+                {
+                    titles.Add(item.InnerText);
+                    //descriptions.Add(item.QuerySelector("h3:not(.share)").InnerText);
+                }
+                foreach (var item in page.QuerySelectorAll(".SummaryCollageEightGridItemList-drfwxm .summary-item__hed-link"))
+                {
+                    var url = "https://www.wired.com/" + item.GetAttributeValue("href","");
+                    
+                    var subdocument = web.Load(url);
+                    var subpage = subdocument.DocumentNode;
+
+                    descriptions.Add(subpage.QuerySelector(".body__inner-container p").InnerText);
+                }
+
+                ViewBag.titles = titles;
+                ViewBag.descriptions = descriptions;
                 return View();
+
+               
             }
             else
             {
