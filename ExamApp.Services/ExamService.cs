@@ -4,7 +4,7 @@ using ExamApp.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace ExamApp.Services
 {
     public class ExamService : IExamService
@@ -35,6 +35,16 @@ namespace ExamApp.Services
         {
             var list = _unitOfWork.Exams.GetAllAsync().Result;
 
+            foreach (var item in list)
+            {
+                item.Questions = _unitOfWork.Questions.GetAllAsync().Result.Where(x=>x.ExamId == item.Id).ToList();
+
+                foreach (var item2 in item.Questions)
+                {
+                    item2.QuestionOptions = _unitOfWork.QuestionOptions.GetAllAsync().Result.Where(x=>x.QuestionId == item2.Id).ToList();
+                }
+            }
+            
             return list;
         }
 
@@ -42,6 +52,11 @@ namespace ExamApp.Services
         {
             var model = _unitOfWork.Exams
                 .GetAsync(id).Result;
+            model.Questions = _unitOfWork.Questions.GetAllAsync().Result.Where(x => x.ExamId == id).ToList();
+            foreach (var item in model.Questions)
+            {
+                item.QuestionOptions = _unitOfWork.QuestionOptions.GetAllAsync().Result.Where(x => x.QuestionId == item.Id).ToList();
+            }
             return model;
         }
 

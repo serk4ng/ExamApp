@@ -34,7 +34,7 @@
       @{Html.BeginForm("Login", "Login", FormMethod.Post);
  
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" name="Username">
+          <input type="text" class="form-control" placeholder="Username" name="Username" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fa fa-person"></span>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="Password">
+          <input type="password" class="form-control" placeholder="Password" name="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -54,6 +54,7 @@
           <!-- /.col -->
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <p class="text-danger">@TempData["Message"]</p>
           </div>
           <!-- /.col -->
         </div>

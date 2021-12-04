@@ -12,11 +12,21 @@ namespace ExamApp.UI.Controllers
 {
     public class HomeController : Controller
     {
-    
+        private readonly IExamService _examService;
+        private readonly IQuestionOptionService _questionOptionService;
+        private readonly IQuestionService _questionService;
+
+        public HomeController(IExamService examService, IQuestionService questionService, IQuestionOptionService questionOptionService)
+        {
+            this._examService = examService;
+            this._questionOptionService = questionOptionService;
+            this._questionService = questionService;
+        }
 
         public IActionResult Index()
         {
-            return View();
+            var exams = _examService.GetAll();
+            return View(exams);
         }
 
         public IActionResult Privacy()

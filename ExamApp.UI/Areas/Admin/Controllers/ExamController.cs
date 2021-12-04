@@ -238,11 +238,12 @@ namespace ExamApp.UI.Areas.Admin.Controllers
             _questionOptionService.Create(q4d);
 
 
-            return View();
+            return View("List");
         }
         public IActionResult Delete(int id)
         {
-            return View();
+            _examService.Delete(id);
+            return RedirectToAction("List");
         }
     }
 }

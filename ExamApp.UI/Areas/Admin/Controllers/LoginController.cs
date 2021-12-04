@@ -40,7 +40,8 @@ namespace ExamApp.UI.Areas.Admin.Controllers
             var auth = _userService.Authorize(user);
             if (auth == null)
             {
-                return RedirectToAction("Index", "Login");
+                TempData["Message"] ="Username or password incorrect !";
+                return Redirect("/Admin/Login");
             }
             else
             {
