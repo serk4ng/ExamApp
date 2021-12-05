@@ -49,7 +49,13 @@ namespace ExamApp.UI.Areas.Admin.Controllers
                     var subdocument = web.Load(url);
                     var subpage = subdocument.DocumentNode;
 
-                    descriptions.Add(subpage.QuerySelector(".body__inner-container p").InnerText);
+                    string a="";
+                    foreach (var item2 in subpage.QuerySelectorAll(".BodyWrapper-ctnerm p"))
+                    {
+                        a += item2.InnerText + "<br/><br/>";
+                    }
+
+                    descriptions.Add(a);
                 }
 
                 ViewBag.titles = titles;
@@ -238,7 +244,7 @@ namespace ExamApp.UI.Areas.Admin.Controllers
             _questionOptionService.Create(q4d);
 
 
-            return View("List");
+            return RedirectToAction("List","Exam");
         }
         public IActionResult Delete(int id)
         {

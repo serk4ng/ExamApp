@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - ExamApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="/Admin/dist/css/alt/adminlte.plugins.min.css">
     <style>
         
 .simple-radio {
@@ -20,7 +21,7 @@
 .simple-radio li {
   display: block;
   line-height: 1.2em;
-  width: 50%;
+  width: 100%;
   color: #636363;
   border: 1px solid #ccc;
   counter-increment: section;
@@ -106,6 +107,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Admin/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 
@@ -130,10 +132,6 @@ $('.s1 li').click(function() {
   $(this).addClass('checked');
 
 });
-
-
-
-
 
 
 $('.s2 li').click(function() {

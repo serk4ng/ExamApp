@@ -20,222 +20,237 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                     @{Html.BeginForm("Create", "Exam", FormMethod.Post);
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Title</label>
-
-                                <select class="form-control select2" style="width: 100%;" name="ExamTitle" id="eTitle" onchange="descval();">
-                                    @foreach (var item in titles)
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <textarea name="ExamDescription" style="height:100%;width:100%;" id="eDescription" onkeydown="auto_grow(this)" readonly> @descriptions[0]</textarea>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group" style="margin-top:20px;">
-
-                        <label>Question 1</label>
+                    @{
+                        Html.BeginForm("Create", "Exam", FormMethod.Post);
                         <div class="row">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="QuestionTitle1" placeholder="Question Title" required /><br />
-                            </div>
-                            <div class="col-lg-6">
-
-                                <span class="input-group-text">A)<input class="form-control" name="QuestionOption1A" required/></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">B)<input class="form-control" name="QuestionOption1B" required/></span>
-                            </div>
-                            <br />
-                            <div class="col-lg-6">
-                                <span class="input-group-text">C)<input class="form-control" name="QuestionOption1C" required/></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">D)<input class="form-control" name="QuestionOption1D" required /></span>
-                            </div>
-
-                            <div class="col-lg-4">
-                            </div>
-                            <div class="col-lg-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Correct Answer</label>
-                                    <select class="form-control select2" style="width: 100%;" name="Question1Answer">
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
+                                    <label>Title</label>
+
+                                    <select class="form-control select2" style="width: 100%;" name="ExamTitle" id="eTitle" onchange="descval();">
+                                        @foreach (var item in titles)
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="margin-top:20px;">
-
-                        <label>Question 2</label>
-                        <div class="row">
                             <div class="col-lg-12">
-                                <input class="form-control" name="QuestionTitle2" placeholder="Question Title" required /><br />
-                            </div>
-                            <div class="col-lg-6">
-
-                                <span class="input-group-text">A)<input class="form-control" name="QuestionOption2A" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">B)<input class="form-control" name="QuestionOption2B" required /></span>
-                            </div>
-                            <br />
-                            <div class="col-lg-6">
-                                <span class="input-group-text">C)<input class="form-control" name="QuestionOption2C" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">D)<input class="form-control" name="QuestionOption2D" required /></span>
+                                <p id="descriptionText">@Html.Raw(descriptions[0])</p>
+                                <textarea name="ExamDescription" style="height:100%;width:100%;display:none;" id="eDescription" onkeydown="auto_grow(this)" readonly> @Html.Raw(descriptions[0])</textarea>
                             </div>
 
-                            <div class="col-lg-4">
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Correct Answer</label>
-                                    <select class="form-control select2" style="width: 100%;" name="Question2Answer">
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                    </select>
+                        </div>
+
+                        <div class="form-group" style="margin-top:20px;">
+
+                            <label>Question 1</label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input class="form-control" name="QuestionTitle1" placeholder="Question Title" required /><br />
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <span class="input-group-text">A)<input class="form-control" name="QuestionOption1A" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">B)<input class="form-control" name="QuestionOption1B" required /></span>
+                                </div>
+                                <br />
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">C)<input class="form-control" name="QuestionOption1C" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">D)<input class="form-control" name="QuestionOption1D" required /></span>
+                                </div>
+
+                                <div class="col-lg-4">
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Correct Answer</label>
+                                        <select class="form-control select2" style="width: 100%;" name="Question1Answer" required>
+                                            <option value="">Choose</option>
+                                            <option value="1">A</option>
+                                            <option value="2">B</option>
+                                            <option value="3">C</option>
+                                            <option value="4">D</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group" style="margin-top:20px;">
+                        <div class="form-group" style="margin-top:20px;">
 
-                        <label>Question 3</label>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="QuestionTitle3" placeholder="Question Title" required /><br />
-                            </div>
-                            <div class="col-lg-6">
+                            <label>Question 2</label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input class="form-control" name="QuestionTitle2" placeholder="Question Title" required /><br />
+                                </div>
+                                <div class="col-lg-6">
 
-                                <span class="input-group-text">A)<input class="form-control" name="QuestionOption3A" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">B)<input class="form-control" name="QuestionOption3B" required /></span>
-                            </div>
-                            <br />
-                            <div class="col-lg-6">
-                                <span class="input-group-text">C)<input class="form-control" name="QuestionOption3C" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">D)<input class="form-control" name="QuestionOption3D" required /></span>
-                            </div>
+                                    <span class="input-group-text">A)<input class="form-control" name="QuestionOption2A" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">B)<input class="form-control" name="QuestionOption2B" required /></span>
+                                </div>
+                                <br />
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">C)<input class="form-control" name="QuestionOption2C" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">D)<input class="form-control" name="QuestionOption2D" required /></span>
+                                </div>
 
-                            <div class="col-lg-4">
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Correct Answer</label>
-                                    <select class="form-control select2" style="width: 100%;" name="Question3Answer">
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                    </select>
+                                <div class="col-lg-4">
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Correct Answer</label>
+                                        <select class="form-control select2" style="width: 100%;" name="Question2Answer" required>
+                                            <option value="">Choose</option>
+                                            <option value="1">A</option>
+                                            <option value="2">B</option>
+                                            <option value="3">C</option>
+                                            <option value="4">D</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group" style="margin-top:20px;">
+                        <div class="form-group" style="margin-top:20px;">
 
-                        <label>Question 4</label>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="QuestionTitle4" placeholder="Question Title"  required/><br />
-                            </div>
-                            <div class="col-lg-6">
+                            <label>Question 3</label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input class="form-control" name="QuestionTitle3" placeholder="Question Title" required /><br />
+                                </div>
+                                <div class="col-lg-6">
 
-                                <span class="input-group-text">A)<input class="form-control" name="QuestionOption4A" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">B)<input class="form-control" name="QuestionOption4B" required /></span>
-                            </div>
-                            <br />
-                            <div class="col-lg-6">
-                                <span class="input-group-text">C)<input class="form-control" name="QuestionOption4C" required /></span>
-                            </div>
-                            <div class="col-lg-6">
-                                <span class="input-group-text">D)<input class="form-control" name="QuestionOption4D" required /></span>
-                            </div>
+                                    <span class="input-group-text">A)<input class="form-control" name="QuestionOption3A" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">B)<input class="form-control" name="QuestionOption3B" required /></span>
+                                </div>
+                                <br />
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">C)<input class="form-control" name="QuestionOption3C" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">D)<input class="form-control" name="QuestionOption3D" required /></span>
+                                </div>
 
-                            <div class="col-lg-4">
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Correct Answer</label>
-                                    <select class="form-control select2" style="width: 100%;" name="Question4Answer">
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                    </select>
+                                <div class="col-lg-4">
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Correct Answer</label>
+                                        <select class="form-control select2" style="width: 100%;" name="Question3Answer" required>
+                                            <option value="">Choose</option>
+                                            <option value="1">A</option>
+                                            <option value="2">B</option>
+                                            <option value="3">C</option>
+                                            <option value="4">D</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                    <button type="submit" class="btn btn-block btn-success" style="display:initial;width:fit-content;">Create Exam</button>
+                        <div class="form-group" style="margin-top:20px;">
+
+                            <label>Question 4</label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input class="form-control" name="QuestionTitle4" placeholder="Question Title" required /><br />
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <span class="input-group-text">A)<input class="form-control" name="QuestionOption4A" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">B)<input class="form-control" name="QuestionOption4B" required /></span>
+                                </div>
+                                <br />
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">C)<input class="form-control" name="QuestionOption4C" required /></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="input-group-text">D)<input class="form-control" name="QuestionOption4D" required /></span>
+                                </div>
+
+                                <div class="col-lg-4">
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Correct Answer</label>
+                                        <select class="form-control select2" style="width: 100%;" name="Question4Answer" required>
+                                            <option value="">Choose</option>
+                                            <option value="1">A</option>
+                                            <option value="2">B</option>
+                                            <option value="3">C</option>
+                                            <option value="4">D</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                     Html.EndForm();}
+
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button type="submit" class="btn btn-block btn-success" style="display:initial;width:fit-content;">Create Exam</button>
+                            </div>
+                        </div>
+                        Html.EndForm();
+                    }
                 </div>
             </div>
 
             <!-- /.form-group -->
         </div>
- 
+
         <!-- /.row -->
- 
-<!-- /.container-fluid -->
+        <!-- /.container-fluid -->
     </section>
 </div>
 
 @section scripts{
-    <script>
-        function descval(){
-            var select = document.getElementById("eTitle");
-            if(select.selectedIndex == "0"){
-x      
-                 $("textarea#eDescription").val('@(descriptions[0])');
-                  $("#eDescription").keydown();
-            }
-            else if(select.selectedIndex == "1"){
-                     
-                   $("textarea#eDescription").val('@(descriptions[1])');
-                    $("#eDescription").keydown();
-            }
-             else if(select.selectedIndex == "2"){
-                         $("textarea#eDescription").val('@(descriptions[2])');
-                          $("#eDescription").keydown();
-            }
-             else if(select.selectedIndex == "3"){
-                       $("textarea#eDescription").val('@(descriptions[3])');
+<script>
+            function descval(){
+                var select = document.getElementById("eTitle");
+                if(select.selectedIndex == "0"){
+    x
+                     $("textarea#eDescription").val('@Html.Raw(descriptions[0])');
+                        $("#descriptionText").html('@Html.Raw(descriptions[0])');
+
+                      $("#eDescription").keydown();
+                }
+                else if(select.selectedIndex == "1"){
+
+                       $("textarea#eDescription").val('@Html.Raw(descriptions[1])');
+                          $("#descriptionText").html('@Html.Raw(descriptions[1])');
                         $("#eDescription").keydown();
+                }
+                 else if(select.selectedIndex == "2"){
+                             $("textarea#eDescription").val('@Html.Raw(descriptions[2])');
+                                $("#descriptionText").html('@Html.Raw(descriptions[2])');
+                              $("#eDescription").keydown();
+                }
+                 else if(select.selectedIndex == "3"){
+                           $("textarea#eDescription").val('@Html.Raw(descriptions[3])');
+                              $("#descriptionText").html('@Html.Raw(descriptions[3])');
+                            $("#eDescription").keydown();
+                }
+                 else if(select.selectedIndex == "4"){
+                             $("textarea#eDescription").val('@Html.Raw(descriptions[4])');
+                                $("#descriptionText").html('@Html.Raw(descriptions[4])');
+                              $("#eDescription").keydown();
+                }
             }
-             else if(select.selectedIndex == "4"){
-                         $("textarea#eDescription").val('@(descriptions[4])');
-                          $("#eDescription").keydown();
-            }
-        }
-    </script>
+
+</script>
+
+
 }
