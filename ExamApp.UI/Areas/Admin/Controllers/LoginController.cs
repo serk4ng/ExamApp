@@ -37,17 +37,26 @@ namespace ExamApp.UI.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Login(User user)
         {
-            var auth = _userService.Authorize(user);
-            if (auth == null)
+            try
             {
-                TempData["Message"] ="Username or password incorrect !";
-                return Redirect("/Admin/Login");
+                var auth = _userService.Authorize(user);
+                if (auth == null)
+                {
+                    TempData["Message"] = "Username or password incorrect !";
+                    return Redirect("/Admin/Login");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                    return RedirectToAction("Index", "Admin");
+                }
             }
-            else
+            catch (System.Exception)
             {
-                HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
-                return RedirectToAction("Index", "Admin");
+
+                throw;
             }
+
 
         }
 

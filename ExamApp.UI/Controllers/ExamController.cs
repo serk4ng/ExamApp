@@ -2,6 +2,7 @@
 using ExamApp.Core.Services;
 using ExamApp.UI.Dto;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 namespace ExamApp.UI.Controllers
 {
@@ -19,26 +20,45 @@ namespace ExamApp.UI.Controllers
         }
         public IActionResult Index(int id)
         {
-            var exam = _examService.Get(id);
-            return View(exam);
+            try
+            {
+                var exam = _examService.Get(id);
+                return View(exam);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         public ExamCreateViewModel CheckExam(ExamCheckViewModel viewModel)
         {
-            var exam = _examService.Get(viewModel.Id);
-            ExamCreateViewModel ec = new ExamCreateViewModel();
-            ec.Id = exam.Id;
-            ec.Question1Answer = (byte)(exam.Questions[0].QuestionOptions.ToList().IndexOf(exam.Questions[0].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
-            ec.Question2Answer = (byte)(exam.Questions[1].QuestionOptions.ToList().IndexOf(exam.Questions[1].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
-            ec.Question3Answer = (byte)(exam.Questions[2].QuestionOptions.ToList().IndexOf(exam.Questions[2].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
-            ec.Question4Answer = (byte)(exam.Questions[3].QuestionOptions.ToList().IndexOf(exam.Questions[3].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
+            try
+            {
+                var exam = _examService.Get(viewModel.Id);
+                ExamCreateViewModel ec = new ExamCreateViewModel();
+                ec.Id = exam.Id;
+                ec.Question1Answer = (byte)(exam.Questions[0].QuestionOptions.ToList().IndexOf(exam.Questions[0].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
+                ec.Question2Answer = (byte)(exam.Questions[1].QuestionOptions.ToList().IndexOf(exam.Questions[1].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
+                ec.Question3Answer = (byte)(exam.Questions[2].QuestionOptions.ToList().IndexOf(exam.Questions[2].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
+                ec.Question4Answer = (byte)(exam.Questions[3].QuestionOptions.ToList().IndexOf(exam.Questions[3].QuestionOptions.Where(x => x.IsCorrect == true).FirstOrDefault()) + 1);
 
-            ec.Question1UserAnswer = viewModel.Question1UserAnswer;
-            ec.Question2UserAnswer = viewModel.Question2UserAnswer;
-            ec.Question3UserAnswer = viewModel.Question3UserAnswer;
-            ec.Question4UserAnswer = viewModel.Question4UserAnswer;
+                ec.Question1UserAnswer = viewModel.Question1UserAnswer;
+                ec.Question2UserAnswer = viewModel.Question2UserAnswer;
+                ec.Question3UserAnswer = viewModel.Question3UserAnswer;
+                ec.Question4UserAnswer = viewModel.Question4UserAnswer;
 
-            return ec;
+                return ec;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
     }
 }
