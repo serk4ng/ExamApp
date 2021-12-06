@@ -243,13 +243,14 @@ namespace ExamApp.UI.Areas.Admin.Controllers
             _questionOptionService.Create(q4c);
             _questionOptionService.Create(q4d);
 
-
-            return RedirectToAction("List","Exam");
+            TempData["toastr"] = "sucess";
+            return RedirectToActionPermanent("List");
         }
         public IActionResult Delete(int id)
         {
             _examService.Delete(id);
             return RedirectToAction("List");
+
         }
     }
 }

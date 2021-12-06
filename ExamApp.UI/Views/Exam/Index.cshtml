@@ -22,7 +22,7 @@
         {
             int option = 0;
             <div class="col-lg-6" id="q@(option+1)">
-                <p>@(i+1) ) @q.Title</p>
+                <p><b>@(i+1)) </b>@q.Title</p>
                 <ul class="simple-radio s@(i+1)" id="sr@(i+1)">
                     <li id="Question@(i+1)option@(option+1)">
                         <input type="radio" name="Question@(i+1)UserAnswer" value="1" required class="required">
@@ -61,11 +61,12 @@
 @section Scripts{
 <script>
  
+  
 
         $("#btnsubmit").click(function () {
  if ( $('form')[0].checkValidity() ) {
    var url = "@Url.Action("CheckExam","Exam")";
-
+             
               var q1_useranswer = $("input[name='Question1UserAnswer']:checked").val();
               var q2_useranswer = $("input[name='Question2UserAnswer']:checked").val();
               var q3_useranswer = $("input[name='Question3UserAnswer']:checked").val();
@@ -79,11 +80,13 @@
                   Question3UserAnswer :q3_useranswer,
                   Question4UserAnswer :q4_useranswer
                 };
+                       var count = 0;
      $.post(url, model, function(ec){
 
-
+   
          if(ec.question1Answer == ec.question1UserAnswer){
-
+             count+=1;
+  
             $("input[name='Question1UserAnswer']:checked").parent('li').addClass('correct');
          }
          else{
@@ -93,7 +96,7 @@
 
 
           if(ec.question2Answer == ec.question2UserAnswer){
-
+               count+=1;
             $("input[name='Question2UserAnswer']:checked").parent('li').addClass('correct');
          }
          else{
@@ -102,7 +105,7 @@
          }
 
             if(ec.question3Answer == ec.question3UserAnswer){
-
+                 count+=1;
             $("input[name='Question3UserAnswer']:checked").parent('li').addClass('correct');
          }
          else{
@@ -112,16 +115,21 @@
 
 
             if(ec.question4Answer == ec.question4UserAnswer){
-
+                count+=1;
             $("input[name='Question4UserAnswer']:checked").parent('li').addClass('correct');
          }
          else{
      $("input[name='Question4UserAnswer']").filter(function(){return this.value== ec.question4Answer}).parent('li').addClass('correct');
               $("input[name='Question4UserAnswer']:checked").parent('li').addClass('incorrect');
          }
+            
+
+         Swal.fire("Correct: " + count + "\nIncorrect: " + (4 - count) );
     });
       document.getElementById("btnsubmit").style.display="none";
            document.getElementById("back").style.display="initial";
+
+         
 }
 else{
     let timerInterval
