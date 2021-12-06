@@ -61,12 +61,11 @@
 @section Scripts{
 <script>
  
-  
+
 
         $("#btnsubmit").click(function () {
  if ( $('form')[0].checkValidity() ) {
-   var url = "@Url.Action("CheckExam","Exam")";
-             
+ 
               var q1_useranswer = $("input[name='Question1UserAnswer']:checked").val();
               var q2_useranswer = $("input[name='Question2UserAnswer']:checked").val();
               var q3_useranswer = $("input[name='Question3UserAnswer']:checked").val();
@@ -81,7 +80,7 @@
                   Question4UserAnswer :q4_useranswer
                 };
                        var count = 0;
-     $.post(url, model, function(ec){
+     $.post(localStorage.getItem('examcheckurl'), model, function(ec){
 
    
          if(ec.question1Answer == ec.question1UserAnswer){

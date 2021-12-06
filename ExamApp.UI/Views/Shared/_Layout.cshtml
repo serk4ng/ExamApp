@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ExamApp</title>
+    <title>ExamApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="/Admin/dist/css/alt/adminlte.plugins.min.css">
@@ -94,7 +94,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" style="background:honeydew;border-radius: 48px;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -108,70 +108,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Admin/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-
-    <script>
-        // simple radio - sets up shop
-
-$('.s1 li').each(function(index) {
-  if ($('input', this).prop('checked')) {
-    $(this).addClass('checked');
-  }
-});
-
-// simple radio - listen for click
-$('.s1 li').click(function() {
-
-  $('.s1 input').removeAttr('checked');
-  $('input', this).attr('checked', 'checked');
-  $('input', this).prop({
-    checked: true
-  });
-  $('.s1 li').removeAttr('class');
-  $(this).addClass('checked');
-
-});
-
-
-$('.s2 li').click(function() {
-
-  $('.s2 input').removeAttr('checked');
-  $('input', this).attr('checked', 'checked');
-  $('input', this).prop({
-    checked: true
-  });
-  $('.s2 li').removeAttr('class');
-  $(this).addClass('checked');
-
-});
-
-
-
-$('.s3 li').click(function() {
-
-  $('.s3 input').removeAttr('checked');
-  $('input', this).attr('checked', 'checked');
-  $('input', this).prop({
-    checked: true
-  });
-  $('.s3 li').removeAttr('class');
-  $(this).addClass('checked');
-
-});
-
-
-$('.s4 li').click(function() {
-
-  $('.s4 input').removeAttr('checked');
-  $('input', this).attr('checked', 'checked');
-  $('input', this).prop({
-    checked: true
-  });
-  $('.s4 li').removeAttr('class');
-  $(this).addClass('checked');
-
-});
-    </script>
+ 
 </body>
 </html>
