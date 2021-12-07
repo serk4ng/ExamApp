@@ -46,6 +46,7 @@ namespace ExamApp.UI.Areas.Admin.Controllers
                     }
                     foreach (var item in page.QuerySelectorAll(".SummaryCollageEightGridItemList-drfwxm .summary-item__hed-link"))
                     {
+                        int textcounter = 0;
                         var url = "https://www.wired.com/" + item.GetAttributeValue("href", "");
 
                         var subdocument = web.Load(url);
@@ -54,7 +55,12 @@ namespace ExamApp.UI.Areas.Admin.Controllers
                         string a = "";
                         foreach (var item2 in subpage.QuerySelectorAll(".BodyWrapper-ctnerm p"))
                         {
-                            a += item2.InnerText + "<br/><br/>";
+                            if (textcounter <50)
+                            {
+                                a += item2.InnerText + "<br/><br/>";
+                            }
+                            
+                            textcounter++;
                         }
 
                         descriptions.Add(a);

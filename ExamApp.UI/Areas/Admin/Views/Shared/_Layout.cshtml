@@ -13,168 +13,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/Admin/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/Admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/Admin/dist/css/alt/adminlte.plugins.min.css">
-    <link  rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-  <style>
-      textarea {
-    resize: none;
-    overflow: hidden;
-    min-height: 50px;
-    max-height: 100px;
-}
-  </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <style>
+        textarea {
+            resize: none;
+            overflow: hidden;
+            min-height: 50px;
+            max-height: 100px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<!-- Site wrapper -->
-<div class="wrapper">
- 
+    <!-- Site wrapper -->
+    <div class="wrapper">
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/Admin/" class="brand-link">
-     
-      <span class="brand-text font-weight-light">Exam App</span>
-    </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-       
-        <div class="info">
-          <a href="#." class="d-block">Welcome, @user.Username</a>
-        </div>
-      </div>
- 
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/Admin/" class="brand-link">
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-         
-                <li class="nav-item">
-            <a href="/Admin/" class="nav-link">
-               <i class="nav-icon fas fa-dice-d20"></i>
-              <p>
-               Dashboard
-              </p>
+                <span class="brand-text font-weight-light">Exam App</span>
             </a>
-          </li>
-               
-               <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Exams
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="@Url.Action("Create","Exam")" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Exam</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="@Url.Action("List","Exam")" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Exam List</p>
-                </a>
-              </li>
-             
-            </ul>
-          </li>
-  
-           <li class="nav-item">
-            <a href="@Url.Action("Logout","Login")" class="nav-link">
-               <i class="fas fa-sign-out-alt"></i>
-              <p>
-             Sign Out
-              </p>
-            </a>
-          </li>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+                    <div class="info">
+                        <a href="#." class="d-block">Welcome, @user.Username</a>
+                    </div>
+                </div>
 
 
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+
+                        <li class="nav-item">
+                            <a href="/Admin/" class="nav-link">
+                                <i class="nav-icon fas fa-dice-d20"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Exams
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Create","Exam")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create Exam</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("List","Exam")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Exam List</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Logout","Login")" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>
+                                    Sign Out
+                                </p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+            <!-- /.sidebar-custom -->
+        </aside>
+
+        <!-- Main content -->
+        @RenderBody()
+
+        <!-- /.content -->
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
-    <!-- /.sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="/Admin/plugins/jquery/jquery.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <!-- Bootstrap 4 -->
+    <script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
- 
-    <!-- /.sidebar-custom -->
-  </aside>
-  
-    <!-- Main content -->
-   @RenderBody()
-   
-    <!-- /.content -->
-  
-  <!-- /.content-wrapper -->
- 
+    <!-- overlayScrollbars -->
+    <script src="/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/Admin/dist/js/adminlte.min.js"></script>
+    <script src="/Admin/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    @*<!-- AdminLTE for demo purposes -->
+        <script src="/Admin/dist/js/demo.js"></script>*@
+    @if (TempData["toastr"] != null)
+    {
+        <script>
+            window.onload = function(){
+             toastr.success('@TempData["toastr"].ToString()');
+              }
+        </script>
 
-<!-- jQuery -->
-<script src="/Admin/plugins/jquery/jquery.min.js"></script>
-@RenderSection("scripts", required: false)
-<!-- Bootstrap 4 -->
-<script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- overlayScrollbars -->
-<script src="/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/Admin/dist/js/adminlte.min.js"></script>
-<script src="/Admin/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-@*<!-- AdminLTE for demo purposes -->
-<script src="/Admin/dist/js/demo.js"></script>*@
-        @if (TempData["toastr"] != null)
-        { <script>
-    window.onload = function(){
-     toastr.success('@TempData["toastr"].ToString()');
-     </script>
     }
-           
-        }
 
-<script>
-    const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-right',
-  iconColor: 'white',
-  customClass: {
-    popup: 'colored-toast'
-  },
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true
-});
+    <script>
+            const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-right',
+          iconColor: 'white',
+          customClass: {
+            popup: 'colored-toast'
+          },
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true
+        });
 
 
 
-</script>
+    </script>
 </body>
 </html>
